@@ -5,7 +5,7 @@ Python scripts for Linux. They check Home Assistant supervised and internet conn
 
 Scripts de python para Linux. Revisan la conexión de Home Assistant supervised y de internet, para reiniciar el router o el servidor si es necesario, y reinician semanalmente el servidor y el router.
 
-Watchdog revisa periodicamente la conexión a internet y que se pueda acceder a Home Assistant. En caso necesario, intentará reiniciar (en este orden) el servicio de Home assistant, el servidor, o la conexión a internet (es decir, reiniciar el router).
+Watchdog revisa periodicamente la conexión a internet y que se pueda acceder a Home Assistant. En caso necesario, intentará reiniciar (en este orden) el servicio de Home Assistant, el servidor, o la conexión a internet (es decir, reiniciar el router).
 
 Weekly restart realiza un reinicio del router y, con un minuto de pausa, reinicia el servidor de Home asistant, para limpiar memoria.
 
