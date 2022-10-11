@@ -1,10 +1,11 @@
 #!/bin/env python3
 import os, time, pyautogui, datetime
-ahora = datetime.datetime.now()
 
+ahora = datetime.datetime.now()
+log= "weekly_restart.csv"
 pyautogui.FAILSAFE = False
+
 pyautogui.click(90, 755)
-#pyautogui.click(90, 561)
 time.sleep(2)
 pyautogui.typewrite('http://192.168.1.1/')
 time.sleep(0.1)
@@ -38,8 +39,9 @@ pyautogui.press('enter')
 time.sleep(0.1)
 pyautogui.press('left')
 time.sleep(0.1)
-pyautogui.press('enter') #print('     -- Se reinicia router') 
-print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},Reiniciado,Reiniciado')
+pyautogui.press('enter') #print('     -- Se reinicia router')
+with open(log, "a") as o:
+    o.write(f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},Reiniciado,Reiniciado\n')
 time.sleep(10) 
 os.system('reboot')
    

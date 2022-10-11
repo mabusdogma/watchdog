@@ -5,6 +5,7 @@ from urllib.request import urlopen
 import time, os, datetime
 
 ahora = datetime.datetime.now()
+log= "watchdog.csv"
 HA='OK'
 servidor='OK'
 router='OK'
@@ -60,7 +61,8 @@ def restart_router():
     pyautogui.press('enter') #print('     -- Se reinicia router') 
     router='Reiniciado'  
     servidor='Reiniciado'
-    print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+    with open(log, "a") as o:
+        o.write(f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}\n')
     time.sleep(30) 
     os.system('reboot')
     
@@ -75,7 +77,8 @@ def restart_server():
     except Exception:
         #print('     --Intento fallido, se reinicia servidor...')
         servidor='Reiniciado'
-        print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+        with open(log, "a") as o:
+            o.write(f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}\n')
         time.sleep(10) 
         os.system('reboot')
 
@@ -98,7 +101,8 @@ def main():
         #print('     -- No HA!')
         restart_server()
         
-    print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+    with open(log, "a") as o:
+        o.write(f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}\n')
      
 if __name__== "__main__" :
     main()
