@@ -24,6 +24,8 @@ DISPLAY=:0
 * 5 * * 6 weekly_restart.py >> log_weekly_restart.csv
 ```
 
+Si se colocan los csv como se indica aqui https://www.home-assistant.io/integrations/file/#sensor se tendrá la información actualizada en Home Assistant.
+
 Debido a que los scripts utilizan pyautogui, es necesario incluir en el archivo crontab al menos Xauthority, PATH y DISPLAY (cambiar <user> por usuario), si no se incluye esta información, no funcionará el reinicio del router.
 
 Se deja un ejemplo de los archivos bash que se utilizarán para ejecutar las órdenes de crontab, también es necesario en ellos cambiar <user> por usuario de Linux.
