@@ -11,18 +11,20 @@ Weekly restart realiza un reinicio del router y, con un minuto de pausa, reinici
 
 Los archivo watchdog.py y weekly_restart.py se pueden programar con crontab para usarse automáticamente.
 
-Los archivo log_watchdog.txt y log_weekly_restart guardan toda la información creada cada vez que crontaba los activa.
+Los archivo watchdog.csv y weekly_restart.csv guardan toda la información creada cada vez que crontaba los activa.
 
-En este ejemplo de crontab, watchdog se activa cada hora y weekly restart a las 4hrs del viernes:
+En este ejemplo de crontab, watchdog se activa cada hora y weekly restart a las 5hrs del sábado:
 
 ```
 XAUTHORITY=/home/<user>/.Xauthority
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 DISPLAY=:0
 
-0 * * * * watchdog.sh >> log_watchdog.txt
-* 4 * * 5 weekly_restart.sh >> log_weekly_restart.txt
+0 * * * * watchdog.py >> watchdog.csv
+* 5 * * 6 weekly_restart.py >> log_weekly_restart.csv
 ```
+
+Si se colocan los csv como se indica aqui https://www.home-assistant.io/integrations/file/#sensor se tendrá la información actualizada en Home Assistant.
 
 Debido a que los scripts utilizan pyautogui, es necesario incluir en el archivo crontab al menos Xauthority, PATH y DISPLAY (cambiar <user> por usuario), si no se incluye esta información, no funcionará el reinicio del router.
 
