@@ -2,7 +2,12 @@
 
 import http.client as httplib
 from urllib.request import urlopen
-import time, os
+import time, os, datetime
+
+ahora = datetime.datetime.now()
+HA='OK'
+servidor='OK'
+router='OK'
 
 def restart_router():
     import pyautogui
@@ -52,40 +57,48 @@ def restart_router():
     time.sleep(0.1)
     pyautogui.press('left')
     time.sleep(0.1)
-    pyautogui.press('enter')
-    print('     -- Se reinicia router')  
-
+    pyautogui.press('enter') #print('     -- Se reinicia router') 
+    router='Reiniciado'  
+    servidor='Reiniciado'
+    print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+    time.sleep(30) 
+    os.system('reboot')
+    
 def restart_server():
-    print ('     --Se reinicia servicio de HA')
+    #print ('     --Se reinicia servicio de HA')
     os.system('systemctl restart hassio-supervisor.service')
+    HA='Reiniciado'
     time.sleep(10) 
     try:
         urlopen("http://localhost:8123")
-        print('     -- HA vuelve a su normalidad!')
+        #print('     -- HA vuelve a su normalidad!')
     except Exception:
-        print('     --Intento fallido, se reinicia servidor...')
+        #print('     --Intento fallido, se reinicia servidor...')
+        servidor='Reiniciado'
+        print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+        time.sleep(10) 
         os.system('reboot')
 
 def main():
-
-#se revisa si HA esta funcionando
-    try:
-        urlopen("http://localhost:8123")
-        print('     -- HA OK')
-    except Exception:
-        print('     -- No HA!')
-        restart_server()
 
 #se revisa conexión a internet
     conn = httplib.HTTPSConnection("8.8.8.8", timeout=5)
     try:
         conn.request("HEAD", "/")
-        print('     -- Internet OK')
-        exit()
+        #print('     -- Internet OK')
     except Exception:
-        print('     -- No internet!')
+        #print('     -- No internet!')
         restart_router()
-        exit()
+
+#se revisa si HA esta funcionando
+    try:
+        urlopen("http://localhost:8123")
+        #print('     -- HA OK')
+    except Exception:
+        #print('     -- No HA!')
+        restart_server()
         
+    print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},{HA},{servidor},{router}')
+     
 if __name__== "__main__" :
     main()

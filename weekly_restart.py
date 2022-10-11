@@ -1,5 +1,6 @@
 #!/bin/env python3
-import sh, time, pyautogui
+import os, time, pyautogui, datetime
+ahora = datetime.datetime.now()
 
 pyautogui.FAILSAFE = False
 pyautogui.click(90, 755)
@@ -37,5 +38,8 @@ pyautogui.press('enter')
 time.sleep(0.1)
 pyautogui.press('left')
 time.sleep(0.1)
-pyautogui.press('enter')
-print('     -- Se reinicia router')    
+pyautogui.press('enter') #print('     -- Se reinicia router') 
+print (f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},Reiniciado,Reiniciado')
+time.sleep(10) 
+os.system('reboot')
+   
