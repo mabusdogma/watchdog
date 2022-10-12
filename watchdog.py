@@ -17,13 +17,13 @@ def restart_router():
 
     #entra a firefox
     pyautogui.click(90, 755)
-    time.sleep(2)
+    time.sleep(3)
 
     #ip del router
     pyautogui.typewrite('http://192.168.1.1/')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('right')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('enter')
     time.sleep(2)
 
@@ -51,13 +51,13 @@ def restart_router():
 
     #activa el reinicio
     pyautogui.press('tab')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('tab')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('enter')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('left')
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.press('enter') #print('     -- Se reinicia router') 
     router='Reiniciado'  
     servidor='Reiniciado'
