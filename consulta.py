@@ -165,4 +165,4 @@ except:
     resp1=resp[0].replace('.', '').strip()
     resp2=resp[1].replace('.', '').replace('Su expediente se encuentra ', '').strip()
     with open(log, "a") as o:
-        o.write(f'{ahora.strftime("%d/%m/%Y")},{resp1},{resp2}\n')
+        o.write(f'{ahora.strftime("%d/%m")},{resp1},{resp2}\n')

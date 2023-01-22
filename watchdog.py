@@ -5,7 +5,7 @@ from urllib.request import urlopen
 import time, os, datetime
 
 ahora = datetime.datetime.now()
-log= "watchdog.csv"
+log= "/usr/share/hassio/homeassistant/pyscript/watchdog.csv"
 HA='OK'
 servidor='OK'
 router='OK'

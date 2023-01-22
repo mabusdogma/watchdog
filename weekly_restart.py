@@ -2,7 +2,7 @@
 import os, time, pyautogui, datetime
 
 ahora = datetime.datetime.now()
-log= "weekly_restart.csv"
+log= "/usr/share/hassio/homeassistant/pyscript/weekly_restart.csv"
 pyautogui.FAILSAFE = False
 
 pyautogui.click(90, 755)
@@ -41,7 +41,7 @@ pyautogui.press('left')
 time.sleep(0.2)
 pyautogui.press('enter') #print('     -- Se reinicia router')
 with open(log, "a") as o:
-    o.write(f'{ahora.strftime("%d/%m/%Y")},{ahora.strftime("%H:%M")},Reiniciado,Reiniciado\n')
+    o.write(f'{ahora.strftime("%d/%m")},{ahora.strftime("%H:%M")},Reiniciado,Reiniciado\n')
 time.sleep(10) 
 os.system('reboot')
    

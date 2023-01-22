@@ -1,0 +1,12 @@
+XAUTHORITY=/home/ha/.Xauthority
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+DISPLAY=:0
+HOME=/root
+LOGNAME=root
+LANG=es_ES.UTF-8
+SHELL=/bin/sh
+PWD=/root
+
+15 17 * * * /home/ha/pelu.sh >> /home/ha/log_pelu.txt
+0 * * * * /home/ha/watchdog.sh >> /home/ha/log_watchdog.txt
+* 4 * * 5 /home/ha/weekly_restart.sh >> /home/ha/log_weekly_restart.txt
