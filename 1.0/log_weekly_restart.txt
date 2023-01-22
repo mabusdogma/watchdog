@@ -1,0 +1,3 @@
+10/10/22   17:19
+     -- Se reinicia router
+     -- Se reinicia ordenardor

@@ -1,0 +1,6 @@
+XAUTHORITY=/home/<user>/.Xauthority
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+DISPLAY=:0
+
+0 * * * * watchdog.sh >> log_watchdog.txt
+* 4 * * 5 weekly_restart.sh >> log_weekly_restart.txt
